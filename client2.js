@@ -25,7 +25,17 @@ socket.addEventListener("open", () => {
     //     type: "hello from client",
     //     content: [ 3, "4" ]
     // }));
+
+    //----------------ON SOME EVENT------------------------------------
+    socket.send(JSON.stringify({
+      type: "cash request",
+      content: [ 1 , 2, 3, 350]
+      // content: [ 'admin_id' , 'order_id', 'table_id', 'price']
+    }));
+    //------------------------------------------------------------------
+
 });
+
 
 // receive a message from the server
 socket.addEventListener("message", ({ data }) => {

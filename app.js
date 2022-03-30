@@ -57,6 +57,20 @@ server.on("connection", (socket) => {
             });
             break;
 
+            case "cash request":
+                users.map( (user) =>
+                {
+                    if(user.author[0] === 'admin' && user.author[1] === packet.content[0])
+                    {
+                        //console.log(user[2]);
+                        user.author[2].send(JSON.stringify({
+                            type: "cash_req",
+                            content: [packet.content[3]]
+                        }));
+                    }
+                });
+                break;
+
         case "connection buildup":
             console.log('A new user connected');
             console.log(packet.content[0]);
